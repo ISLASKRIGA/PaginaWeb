@@ -1,4 +1,3 @@
-import { env } from "cloudflare:workers";
 export class HttpError extends Error {
   constructor(
     public status: number,
@@ -8,7 +7,7 @@ export class HttpError extends Error {
   }
 }
 export function config() {
-  const e = env as unknown as Record<string, string | undefined>;
+  const e = process.env as Record<string, string | undefined>;
   return {
     url: e.SUPABASE_URL || "",
     anon: e.SUPABASE_ANON_KEY || "",
